@@ -66,3 +66,12 @@ der Urheber genannt wird („WÜRFEL – entwickelt von Ridvan“).
 
 Das deutsche Urheberrecht (§§ 1–7 UrhG) bleibt unberührt.
 Der Urheber behält alle Rechte.
+
+# WÜRFEL – Gegenteil von Müll FREMDSINGULARITÄT 
+Erstellt von iki1uc Present von YT KANAL @wieimmer4u KlicK
+
+Ich baue Systeme, die Klarheit schaffen.
+Der WÜRFEL ist ein Werkzeug für Ordnung, 
+Präsenz und Struktur.
+Wer ihn nutzt, versteht sofort, 
+wie wenig man braucht, um klar zu denken.
