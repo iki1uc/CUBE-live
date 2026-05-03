@@ -50,3 +50,19 @@ S = clamp( Σ(P_i) ÷ n , 0.1 , 1.0 )
 
 ## 10. Output
 F_final = round(F, 3)
+----------------------------------------------------
+Der WÜRFEL ist ein vom Urheber entwickeltes logisches Bewertungssystem.
+Die veröffentlichte Formelarchitektur darf von jeder Person genutzt, gelesen und zitiert werden.
+
+Die konkrete Implementierung (Parameter, Gewichtungen, Drift‑Regeln, Präfix‑Matrix, Instanz‑Logik, interne Reihenfolge, Meta‑Mechanik) bleibt Eigentum des Urhebers und ist nicht Bestandteil der öffentlichen Veröffentlichung.
+
+Eine Nutzung des WÜRFELs ist erlaubt, solange
+
+der WÜRFEL nicht als eigenes Produkt verkauft wird,
+
+die interne Implementierung nicht rekonstruiert oder veröffentlicht wird,
+
+der Urheber genannt wird („WÜRFEL – entwickelt von Ridvan“).
+
+Das deutsche Urheberrecht (§§ 1–7 UrhG) bleibt unberührt.
+Der Urheber behält alle Rechte.
