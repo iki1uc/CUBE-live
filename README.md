@@ -75,3 +75,78 @@ Der WÜRFEL ist ein Werkzeug für Ordnung,
 Präsenz und Struktur.
 Wer ihn nutzt, versteht sofort, 
 wie wenig man braucht, um klar zu denken.
+-----------------------------------------
+# Die 5 Zustände — Enddefinierte Formeln
+
+## 1. Impuls
+**Formel:**
+p = m · v
+
+## 2. Widerstand
+**Formel:**
+F_gegen = Reibung  
+oder  
+F_gesamt < 0
+
+## 3. Gleichgewicht
+**Formel:**
+ΣF = 0
+
+## 4. Durchbruch
+**Formel:**
+F_netto > 0
+
+## 5. Wirkung
+**Formel:**
+a = F_netto / m
+
+---
+
+## Ultra-Kurz (ALPHA-Version)
+
+p = m v  
+F_gegen  
+ΣF = 0  
+F_netto > 0  
+a = F / m
+
+---
+
+## Eigenschaften
+
+- Naturgesetz-Modell  
+- Physikalische Abbildung  
+- Universeller Zyklus  
+- Mathematische Struktur  
+- Enddefiniert
+--------------------------------
+p = m v
+F_gegen
+ΣF = 0
+F_netto > 0
+a = F/m
+---------------------------
+# 5-Zustände-Modell (Enddefiniert)
+
+**1. Impuls**  
+p = m · v
+
+**2. Widerstand**  
+F_gegen = Reibung  
+F_gesamt < 0
+
+**3. Gleichgewicht**  
+ΣF = 0
+
+**4. Durchbruch**  
+F_netto > 0
+
+**5. Wirkung**  
+a = F_netto / m
+
+**Ultra-Kurz:**  
+p = m v  
+F_gegen  
+ΣF = 0  
+F_netto > 0  
+a = F/m
