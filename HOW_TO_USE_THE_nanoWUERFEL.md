@@ -1,4 +1,26 @@
 
+# WOFÜR IST DER nanoWÜRFEL?
+Der nanoWÜRFEL ist ein extrem einfacher Rechenkern, mit dem jeder Mensch
+— egal welcher Beruf, welches Alter, welches Wissen —
+in wenigen Sekunden ein klares Ergebnis erzeugen kann.
+
+Du brauchst:
+- keine Theorie
+- keine Erklärung
+- keine Vorkenntnisse
+
+Nur vier Zahlen.
+
+Der nanoWÜRFEL zeigt dir:
+**Wie ein Zustand sich entwickelt und welches Ergebnis am Ende herauskommt.**
+
+Wenn du wissen willst:
+„Was passiert, wenn ich diese vier Werte durch die Naturzustände schicke?“  
+→ Dann ist der nanoWÜRFEL dein Werkzeug.
+
+Los geht’s.
+
+---------------------
 # HOW TO USE THE nanoWÜRFEL
 Der nanoWÜRFEL ist ein universeller mathematischer Reduktionskern.  
 Er nimmt vier Eingabewerte und führt sie durch fünf Naturzustände, um ein eindeutiges Ergebnis zu erzeugen.
