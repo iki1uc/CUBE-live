@@ -116,3 +116,13 @@ Nur Zahlen.
 ---
 
 # 7. KURZFORMEL
+---------------------------
+
+---
+
+# 8. nanoWÜRFEL = REINER OPERATOR
+Er ist kein System.  
+Er ist kein Programm.  
+Er ist kein Framework.  
+Er ist ein **mathematischer Kern**.
+
