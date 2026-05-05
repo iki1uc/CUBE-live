@@ -140,7 +140,19 @@ Nur Zahlen.
 # 7. KURZFORMEL
 ---------------------------
 
----
+# WICHTIGER HINWEIS
+Der nanoWÜRFEL ist ein rein mathematischer Operator.
+Er beschreibt keine Emotionen, keine Psychologie, keine Persönlichkeit
+und keine symbolischen Bedeutungen.
+
+Er arbeitet ausschließlich mit:
+- Zahlen
+- Naturzuständen
+- physikalischen Grundprinzipien
+- deterministischen Rechenschritten
+
+Der nanoWÜRFEL kann daher nicht interpretiert, gedeutet oder „ausgelegt“ werden.
+Er liefert immer nur ein mathematisches Ergebnis.
 
 # 8. nanoWÜRFEL = REINER OPERATOR
 Er ist kein System.  
