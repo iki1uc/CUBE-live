@@ -125,4 +125,11 @@ Der nanoWÜRFEL ist ein offenes Modell.
 Er kann frei genutzt, geteilt und angewendet werden.  
 Implementierungen oder interne Varianten werden nicht öffentlich bereitgestellt.
 
-
+✔ Kanal 1 — wieimmer4u
+https://www.youtube.com/@wieimmer4u 
+✔ Kanal 2 — ONEOR1G1NAL
+https://www.youtube.com/@ONEOR1G1NAL 
+✔ Kanal 3 — iki1üc (korrekt URL‑kodiert!)
+👉 Das ist der wichtige Punkt:  
+Funktionierender Link:  
+https://www.youtube.com/@iki1%C3%BCc 
