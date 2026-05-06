@@ -1,152 +1,102 @@
+# nanoWÜRFEL  
+Ein universeller mathematischer Operator zur Reduktion komplexer Zustände.
 
-# WÜRFEL — Formelarchitektur
+Der nanoWÜRFEL ist ein extrem einfacher Rechenkern, der aus vier Eingabewerten
+ein eindeutiges Ergebnis erzeugt. Er basiert auf fünf universellen Naturzuständen,
+die in Mathematik, Physik und Natur überall vorkommen.
 
-## 1. Grundformel
-W = ( Σ(P_i × W_i) – Drift ) ÷ Stabilität
+Der nanoWÜRFEL benötigt:
+- keine Theorie
+- keine Interpretation
+- keine Vorkenntnisse
+- keinen Kontext
 
-## 2. Parameterraum
-P = { P_1, P_2, P_3, P_4 }
-W = Gewichtung
-D = Drift
-S = Stabilität
-
-## 3. Ebenen
-RAW  = Σ(P_i × W_i)
-FREE = RAW – Drift
-PRO  = FREE ÷ Stabilität
-
-## 4. Instanzbildung
-I = f(PRO)
-I muss gelten:
-I ∈ ℝ  
-I ≥ 0  
-I stabil  
-
-## 5. Finalwert
-F = normalize(I)
-
-## 6. Präfixlogik
-Prefix = { + , – , ? , ! }
-
-Mapping:
-+  → Verstärkung  
-–  → Reduktion  
-?  → Abfrage  
-!  → Priorisierung
-
-## 7. Vier‑Wege‑Rechenbarkeit
-Vorwärts:   F = f(P)  
-Rückwärts:  P = f⁻¹(F)  
-Vergleich:  Δ = F_a – F_b  
-Delta:      ∂F/∂P_i
-
-## 8. Driftkontrolle
-Drift = | RAW – Erwartung |
-Drift_max = definierter Grenzwert  
-Wenn Drift > Drift_max → Re‑Normierung
-
-## 9. Stabilitätskern
-S = clamp( Σ(P_i) ÷ n , 0.1 , 1.0 )
-
-## 10. Output
-F_final = round(F, 3)
-----------------------------------------------------
-Der WÜRFEL ist ein vom Urheber entwickeltes logisches Bewertungssystem.
-Die veröffentlichte Formelarchitektur darf von jeder Person genutzt, gelesen und zitiert werden.
-
-Die konkrete Implementierung (Parameter, Gewichtungen, Drift‑Regeln, Präfix‑Matrix, Instanz‑Logik, interne Reihenfolge, Meta‑Mechanik) bleibt Eigentum des Urhebers und ist nicht Bestandteil der öffentlichen Veröffentlichung.
-
-Eine Nutzung des WÜRFELs ist erlaubt, solange
-
-der WÜRFEL nicht als eigenes Produkt verkauft wird,
-
-die interne Implementierung nicht rekonstruiert oder veröffentlicht wird,
-
-der Urheber genannt wird („WÜRFEL – entwickelt von Ridvan“).
-
-Das deutsche Urheberrecht (§§ 1–7 UrhG) bleibt unberührt.
-Der Urheber behält alle Rechte.
-
-# WÜRFEL – Gegenteil von Müll FREMDSINGULARITÄT 
-Erstellt von iki1uc Present von YT KANAL @wieimmer4u KlicK
-
-Ich baue Systeme, die Klarheit schaffen.
-Der WÜRFEL ist ein Werkzeug für Ordnung, 
-Präsenz und Struktur.
-Wer ihn nutzt, versteht sofort, 
-wie wenig man braucht, um klar zu denken.
------------------------------------------
-# Die 5 Zustände — Enddefinierte Formeln
-
-## 1. Impuls
-**Formel:**
-p = m · v
-
-## 2. Widerstand
-**Formel:**
-F_gegen = Reibung  
-oder  
-F_gesamt < 0
-
-## 3. Gleichgewicht
-**Formel:**
-ΣF = 0
-
-## 4. Durchbruch
-**Formel:**
-F_netto > 0
-
-## 5. Wirkung
-**Formel:**
-a = F_netto / m
+Nur vier Zahlen → ein Ergebnis.
 
 ---
 
-## Ultra-Kurz (ALPHA-Version)
+# 1. Die 4 Eingaben
 
-p = m v  
-F_gegen  
-ΣF = 0  
-F_netto > 0  
-a = F / m
+Jeder nanoWÜRFEL benötigt exakt vier Werte:
+
+1. **Startwert**  
+2. **Minuswert** (Widerstand)  
+3. **Pluswert** (Ausgleich)  
+4. **Schwellenwert** (Durchbruch)
+
+Beispiel:  
+`10, -5, +5, +1`
 
 ---
 
-## Eigenschaften
+# 2. Die 5 Universal-Zustände
 
-- Naturgesetz-Modell  
-- Physikalische Abbildung  
-- Universeller Zyklus  
-- Mathematische Struktur  
-- Enddefiniert
---------------------------------
-p = m v
-F_gegen
-ΣF = 0
-F_netto > 0
-a = F/m
----------------------------
-# 5-Zustände-Modell (Enddefiniert)
+Der nanoWÜRFEL rechnet immer in derselben Reihenfolge:
 
-**1. Impuls**  
-p = m · v
+### 1. IMPULS  
+Startwert übernehmen.
 
-**2. Widerstand**  
-F_gegen = Reibung  
-F_gesamt < 0
+### 2. WIDERSTAND  
+Startwert + Minuswert.
 
-**3. Gleichgewicht**  
-ΣF = 0
+### 3. GLEICHGEWICHT  
+Ergebnis + Pluswert.
 
-**4. Durchbruch**  
-F_netto > 0
+### 4. DURCHBRUCH  
+Ergebnis + Schwellenwert.
 
-**5. Wirkung**  
-a = F_netto / m
+### 5. WIRKUNG  
+Finales Ergebnis.
 
-**Ultra-Kurz:**  
-p = m v  
-F_gegen  
-ΣF = 0  
-F_netto > 0  
-a = F/m
+---
+
+# 3. Beispiel
+
+Start = 10  
+Minus = -5  
+Plus = +5  
+Schwelle = +1  
+
+1. Impuls: 10  
+2. Widerstand: 10 - 5 = 5  
+3. Gleichgewicht: 5 + 5 = 10  
+4. Durchbruch: 10 + 1 = 11  
+5. Wirkung: **11**
+
+---
+
+# 4. Warum das funktioniert
+
+Die fünf Zustände entsprechen universellen Naturgesetzen:
+
+- Impuls → Bewegung beginnt  
+- Widerstand → Gegenkraft wirkt  
+- Gleichgewicht → Kräfte heben sich auf  
+- Durchbruch → Schwelle überschritten  
+- Wirkung → Resultierende Bewegung  
+
+Der nanoWÜRFEL bildet diese Struktur mathematisch ab.
+
+---
+
+# 5. Einsatzgebiete
+
+Der nanoWÜRFEL funktioniert in:
+
+- Mathematik  
+- Physik  
+- Technik  
+- Informatik  
+- Logistik  
+- Energie  
+- Hydraulik  
+- BWL  
+- Alltag  
+
+Weil er **keine Bedeutung** braucht.  
+Nur Zahlen.
+
+---
+
+# 6. Kurzformel
+
