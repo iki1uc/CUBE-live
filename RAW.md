@@ -9,3 +9,4 @@ Dualität + Triolet
 Innen + Außen
 
 Dualität → Triolet → Optikolet → Quartelder → Dualität
+
