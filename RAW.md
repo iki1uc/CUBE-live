@@ -17,3 +17,4 @@ Der Satz gehört in RAW.
 Er beschreibt den Übergang RAW → Struktur.  
 Optikolet → Quartelder → Dualität.  
 Nicht davor. Nicht danach. Er IST der Übergang.
+
