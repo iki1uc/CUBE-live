@@ -100,3 +100,29 @@ Nur Zahlen.
 
 # 6. Kurzformel
 
+---
+
+# 7. Wichtiger Hinweis
+
+Der nanoWÜRFEL ist ein rein mathematischer Operator.
+
+Er beschreibt:
+- keine Emotionen  
+- keine Psychologie  
+- keine Persönlichkeit  
+- keine symbolischen Bedeutungen  
+
+Er arbeitet ausschließlich mit:
+- Zahlen  
+- Naturzuständen  
+- deterministischen Rechenschritten  
+
+---
+
+# 8. Lizenz / Nutzung
+
+Der nanoWÜRFEL ist ein offenes Modell.  
+Er kann frei genutzt, geteilt und angewendet werden.  
+Implementierungen oder interne Varianten werden nicht öffentlich bereitgestellt.
+
+
