@@ -1,120 +1,20 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <title>9-Maske – KI Raster</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      color: #0ff;
-      font-family: monospace;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap: 4px;
-      width: 90vmin;
-      height: 90vmin;
-      border: 2px solid #0ff;
-    }
-    .cell {
-      border: 1px solid #044;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-size: 2.2vmin;
-      text-align: center;
-      padding: 4px;
-    }
-    .tag { font-weight: bold; font-size: 2.6vmin; }
-    .sys { color: #0f0; }
-    .usr { color: #ff0; }
-    .abg { color: #f66; }
-  </style>
-</head>
-<body>
+<script>
+function cubeKontakt(cubeID, projekt) {
 
-<div class="grid">
-  <!-- Oben links -->
-  <div class="cell">
-    <div class="tag">AX</div>
-    <div class="sys">SYS: 1 🙂</div>
-    <div class="usr">USR: 1 🙂</div>
-    <div class="abg">OK ✔</div>
-  </div>
+  // KI-Meldung: Bereitschaft
+  const bereit = 
+    cubeID + " → Bereitschaft 100% → Ressourcen stabil → Leitung frei → Projekt: " +
+    projekt + " → Bereit zur Arbeitseinleitung.";
 
-  <!-- Oben mitte -->
-  <div class="cell">
-    <div class="tag">BX</div>
-    <div class="sys">SYS: 2 😐</div>
-    <div class="usr">USR: 3 😕</div>
-    <div class="abg">DIFF ✖</div>
-  </div>
+  document.getElementById("cube-anker").textContent = bereit;
 
-  <!-- Oben rechts -->
-  <div class="cell">
-    <div class="tag">QL</div>
-    <div class="sys">SYS: 3 😎</div>
-    <div class="usr">USR: 3 🙂</div>
-    <div class="abg">MATCH ✔✔</div>
-  </div>
+  // KI-Meldung: Arbeitseinleitung
+  const start = 
+    cubeID + " → Arbeit eingeleitet → Prozess läuft…";
 
-  <!-- Mitte links -->
-  <div class="cell">
-    <div class="tag">DM</div>
-    <div class="sys">SYS: 2 😶</div>
-    <div class="usr">USR: 1 😐</div>
-    <div class="abg">CHECK ?</div>
-  </div>
+  document.getElementById("cube-status").textContent = start;
 
-  <!-- Mitte -->
-  <div class="cell">
-    <div class="tag">C2</div>
-    <div class="sys">SYS: 9 🙂</div>
-    <div class="usr">USR: 8 😐</div>
-    <div class="abg">698869</div>
-  </div>
-
-  <!-- Mitte rechts -->
-  <div class="cell">
-    <div class="tag">ZR</div>
-    <div class="sys">SYS: 1 🙂</div>
-    <div class="usr">USR: 1 🙂</div>
-    <div class="abg">FULL ⭐</div>
-  </div>
-
-  <!-- Unten links -->
-  <div class="cell">
-    <div class="tag">RW</div>
-    <div class="sys">SYS: R 😈</div>
-    <div class="usr">USR: G 🙂</div>
-    <div class="abg">SAFE? ⚠</div>
-  </div>
-
-  <!-- Unten mitte -->
-  <div class="cell">
-    <div class="tag">SF</div>
-    <div class="sys">SYS: S 🙂</div>
-    <div class="usr">USR: S 🙂</div>
-    <div class="abg">SAFE ✔</div>
-  </div>
-
-  <!-- Unten rechts -->
-  <div class="cell">
-    <div class="tag">4A</div>
-    <div class="sys">SYS: 4 🙂</div>
-    <div class="usr">USR: 4 🙂</div>
-    <div class="abg">4ALL ✔</div>
-  </div>
-</div>
-
-</body>
-</html>
+  // Hier startet die Cube-spezifische Arbeit
+  cubeJob(cubeID);
+}
+</script>
