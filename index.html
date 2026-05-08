@@ -1,57 +1,120 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Gegenteil von Müll – Version B</title>
-<style>
+  <meta charset="UTF-8">
+  <title>9-Maske – KI Raster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
     body {
-        margin: 0;
-        padding: 20px;
-        background: #0f0f0f;
-        color: #e5e5e5;
-        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-    }
-    .wrap {
-        max-width: 1100px;
-        margin: auto;
-        background: #181818;
-        padding: 25px;
-        border-radius: 12px;
-        border: 1px solid #333;
-    }
-    h1 {
-        margin-top: 0;
-        font-size: 2.4rem;
-        color: #6cf;
-    }
-    h2 {
-        margin-top: 40px;
-        color: #ffd35c;
-    }
-    h3 {
-        margin-top: 25px;
-        color: #9cf;
-    }
-    .block {
-        margin-top: 25px;
-        padding: 18px;
-        background: #222;
-        border-radius: 10px;
-        border: 1px solid #333;
-    }
-    .label {
-        font-size: 0.75rem;
-        color: #aaa;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        margin-bottom: 10px;
+      margin: 0;
+      background: #000;
+      color: #0ff;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
     .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 20px;
-        margin-top: 15px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 4px;
+      width: 90vmin;
+      height: 90vmin;
+      border: 2px solid #0ff;
     }
-    .cube {
-        background: #202020;
-        border-radius: 10px;
+    .cell {
+      border: 1px solid #044;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.2vmin;
+      text-align: center;
+      padding: 4px;
+    }
+    .tag { font-weight: bold; font-size: 2.6vmin; }
+    .sys { color: #0f0; }
+    .usr { color: #ff0; }
+    .abg { color: #f66; }
+  </style>
+</head>
+<body>
+
+<div class="grid">
+  <!-- Oben links -->
+  <div class="cell">
+    <div class="tag">AX</div>
+    <div class="sys">SYS: 1 🙂</div>
+    <div class="usr">USR: 1 🙂</div>
+    <div class="abg">OK ✔</div>
+  </div>
+
+  <!-- Oben mitte -->
+  <div class="cell">
+    <div class="tag">BX</div>
+    <div class="sys">SYS: 2 😐</div>
+    <div class="usr">USR: 3 😕</div>
+    <div class="abg">DIFF ✖</div>
+  </div>
+
+  <!-- Oben rechts -->
+  <div class="cell">
+    <div class="tag">QL</div>
+    <div class="sys">SYS: 3 😎</div>
+    <div class="usr">USR: 3 🙂</div>
+    <div class="abg">MATCH ✔✔</div>
+  </div>
+
+  <!-- Mitte links -->
+  <div class="cell">
+    <div class="tag">DM</div>
+    <div class="sys">SYS: 2 😶</div>
+    <div class="usr">USR: 1 😐</div>
+    <div class="abg">CHECK ?</div>
+  </div>
+
+  <!-- Mitte -->
+  <div class="cell">
+    <div class="tag">C2</div>
+    <div class="sys">SYS: 9 🙂</div>
+    <div class="usr">USR: 8 😐</div>
+    <div class="abg">698869</div>
+  </div>
+
+  <!-- Mitte rechts -->
+  <div class="cell">
+    <div class="tag">ZR</div>
+    <div class="sys">SYS: 1 🙂</div>
+    <div class="usr">USR: 1 🙂</div>
+    <div class="abg">FULL ⭐</div>
+  </div>
+
+  <!-- Unten links -->
+  <div class="cell">
+    <div class="tag">RW</div>
+    <div class="sys">SYS: R 😈</div>
+    <div class="usr">USR: G 🙂</div>
+    <div class="abg">SAFE? ⚠</div>
+  </div>
+
+  <!-- Unten mitte -->
+  <div class="cell">
+    <div class="tag">SF</div>
+    <div class="sys">SYS: S 🙂</div>
+    <div class="usr">USR: S 🙂</div>
+    <div class="abg">SAFE ✔</div>
+  </div>
+
+  <!-- Unten rechts -->
+  <div class="cell">
+    <div class="tag">4A</div>
+    <div class="sys">SYS: 4 🙂</div>
+    <div class="usr">USR: 4 🙂</div>
+    <div class="abg">4ALL ✔</div>
+  </div>
+</div>
+
+</body>
+</html>
