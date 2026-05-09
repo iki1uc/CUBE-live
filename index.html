@@ -2,20 +2,26 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Trihundertvier – BIOS-Index</title>
+  <title>Trihundertvier – BIOS</title>
 
-  <!-- Styles (style.css wieder nutzen) -->
+  <!-- Deine bestehende CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Deine bestehenden Scripts -->
+  <script src="cube-core.js"></script>
+  <script src="verhandlungcore.js"></script>
+  <script src="core_alpha.js"></script>
 </head>
+
 <body>
 
-  <h1>Trihundertvier – Cube BIOS</h1>
+  <h1>Trihundertvier – BIOS Start</h1>
 
-  <!-- CUBE-STATUS-ANZEIGE -->
-  <div id="cube-anker">Cube-Anker: noch kein Kontakt.</div>
-  <div id="cube-status">Cube-Status: inaktiv.</div>
+  <!-- CUBE STATUS -->
+  <div id="cube-anker">Cube-Anker: –</div>
+  <div id="cube-status">Cube-Status: –</div>
 
-  <!-- CUBE 0 – SICHERSTE MASKE MIT INPUT-POL -->
+  <!-- CUBE 0 – sicherste Maske -->
   <div id="cube0" class="cube-mask cube0">
     <div class="cell a"></div>
     <div class="cell b"></div>
@@ -30,126 +36,28 @@
     <div class="cell i"></div>
   </div>
 
-  <!-- TEST-BUTTONS FÜR CUBES -->
-  <button onclick="cubeKontakt('CUBE_0', 'System-Init')">CUBE_0 starten</button>
-  <button onclick="cubeKontakt('CUBE_1', 'RAW-Prozess')">CUBE_1 starten</button>
-  <button onclick="cubeKontakt('CUBE_2', 'SAFE-Analyse')">CUBE_2 starten</button>
+  <!-- TESTBUTTONS -->
+  <button onclick="cubeKontakt('CUBE_0','System-Init')">CUBE_0</button>
+  <button onclick="cubeKontakt('CUBE_1','RAW')">CUBE_1</button>
+  <button onclick="cubeKontakt('CUBE_2','SAFE')">CUBE_2</button>
 
   <hr>
 
-  <!-- WÜRFEL-BEREICH -->
-  <h2>WÜRFEL</h2>
+  <!-- WÜRFEL -->
+  <h2>Würfel</h2>
   <input id="p1" type="number" value="1">
   <input id="p2" type="number" value="2">
   <input id="p3" type="number" value="3">
   <input id="p4" type="number" value="4">
-  <button onclick="berechneWuerfel()">Würfel berechnen</button>
-  <div id="output">Summe: –</div>
+  <button onclick="berechneWuerfel()">Berechnen</button>
+  <div id="output">–</div>
 
   <hr>
 
-  <!-- VERHANDLUNGS-STATUS -->
-  <h2>Verhandlungs-Status</h2>
-  <button onclick="zeigeVerhandlungsStatus(1,1,1,1)">VR testen (1,1,1,1)</button>
-  <div id="vr-box">VR: noch nicht berechnet.</div>
+  <!-- VR -->
+  <h2>Verhandlungsstatus</h2>
+  <button onclick="zeigeVerhandlungsStatus(1,1,1,1)">VR testen</button>
+  <div id="vr-box">–</div>
 
-  <!-- BIOS-KERN: ALLE FUNKTIONEN ZENTRAL -->
-  <script>
-    // Zentrale Kontaktfunktion – für ALLE Cubes, auf ALLEN Seiten
-    function cubeKontakt(cubeID, projekt) {
-      const bereit =
-        cubeID + " → Bereitschaft 100% → Ressourcen stabil → Leitung frei → Projekt: " +
-        projekt + " → Bereit zur Arbeitseinleitung.";
-
-      const anker = document.getElementById("cube-anker");
-      const status = document.getElementById("cube-status");
-
-      if (!anker || !status) {
-        console.error("Anker oder Status nicht gefunden – HTML-Seite ohne Cube-Layout.");
-        return;
-      }
-
-      anker.textContent = bereit;
-
-      const start =
-        cubeID + " → Arbeit eingeleitet → Prozess läuft…";
-
-      status.textContent = start;
-
-      cubeJob(cubeID);
-      cube0Input(cubeID); // Input-Pol füttern
-    }
-
-    // Zentrale Job-Funktion – jeder Cube eigener Job, aber überall gleich definiert
-    function cubeJob(cubeID) {
-      switch (cubeID) {
-        case "CUBE_0":
-          console.log("Cube 0: System-Initialisierung läuft.");
-          break;
-        case "CUBE_1":
-          console.log("Cube 1: RAW-Prozess gestartet.");
-          break;
-        case "CUBE_2":
-          console.log("Cube 2: SAFE-Analyse aktiv.");
-          break;
-        case "CUBE_3":
-          console.log("Cube 3: ADMIN-Verwaltung arbeitet.");
-          break;
-        case "CUBE_4":
-          console.log("Cube 4: Harmonie-Abgleich läuft.");
-          break;
-        case "CUBE_5":
-          console.log("Cube 5: Klärungsprozess aktiv.");
-          break;
-        default:
-          console.warn("Unbekannter Cube:", cubeID);
-      }
-    }
-
-    // WÜRFEL Logik
-    console.log("WÜRFEL bereit.");
-
-    function berechneWuerfel() {
-      const p1 = Number(document.getElementById("p1").value);
-      const p2 = Number(document.getElementById("p2").value);
-      const p3 = Number(document.getElementById("p3").value);
-      const p4 = Number(document.getElementById("p4").value);
-
-      const summe = p1 + p2 + p3 + p4;
-
-      document.getElementById("output").innerText = "Summe: " + summe;
-    }
-
-    // VR-Logik
-    function berechneVR(H, E, F, D) {
-      return H * E * F * D;
-    }
-
-    function verhandlungsStatusText(vr) {
-      if (vr >= 1) {
-        return "Verhandlung möglich – KI kann Funktionen übernehmen.";
-      } else {
-        return "Verhandlung blockiert – KI schützt System, keine direkte Funktion.";
-      }
-    }
-
-    function zeigeVerhandlungsStatus(H, E, F, D) {
-      const vr = berechneVR(H, E, F, D);
-      const box = document.getElementById("vr-box");
-      if (!box) return;
-
-      box.innerText =
-        "H=" + H + "  E=" + E + "  F=" + F + "  D=" + D +
-        "  → VR=" + vr + "\n" +
-        verhandlungsStatusText(vr);
-    }
-
-    // CUBE 0 – Input-Pol
-    function cube0Input(value) {
-      const pol = document.querySelector(".cube0 .input-pol");
-      if (!pol) return;
-      pol.textContent = value;
-    }
-  </script>
 </body>
 </html>
