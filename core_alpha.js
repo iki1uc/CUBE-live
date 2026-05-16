@@ -1,4 +1,3 @@
-
 console.log("core_alpha geladen – Cube-Motor aktiv.");
 
 // Cube 0 Input-Pol
