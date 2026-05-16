@@ -1,4 +1,3 @@
-
 // Zentrale Kontaktfunktion – für ALLE Cubes, auf ALLEN Seiten
 function cubeKontakt(cubeID, projekt) {
   const bereit =
