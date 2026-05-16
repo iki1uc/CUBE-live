@@ -2,62 +2,57 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Trihundertvier – BIOS</title>
-
-  <!-- Deine bestehende CSS -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Deine bestehenden Scripts -->
-  <script src="cube-core.js"></script>
-  <script src="verhandlungcore.js"></script>
-  <script src="core_alpha.js"></script>
+  <title>CubeLIVE LVL-UP</title>
+  <style>
+    #lvlup-box {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+    }
+    #lvlup-img {
+      max-width: 100%;
+      max-height: 100%;
+      display: none;
+    }
+  </style>
 </head>
-
 <body>
 
-  <h1>Trihundertvier – BIOS Start</h1>
+  <!-- Trigger (Umgebung: Klick, später beliebig ersetzbar) -->
+  <button onclick="lvlUp()">LVL-UP jetzt</button>
 
-  <!-- CUBE STATUS -->
-  <div id="cube-anker">Cube-Anker: –</div>
-  <div id="cube-status">Cube-Status: –</div>
-
-  <!-- CUBE 0 – sicherste Maske -->
-  <div id="cube0" class="cube-mask cube0">
-    <div class="cell a"></div>
-    <div class="cell b"></div>
-    <div class="cell c"></div>
-
-    <div class="cell d"></div>
-    <div class="cell e input-pol"></div>
-    <div class="cell f"></div>
-
-    <div class="cell g"></div>
-    <div class="cell h"></div>
-    <div class="cell i"></div>
+  <!-- CubeLIVE LVL-UP Fläche -->
+  <div id="lvlup-box">
+    <img id="lvlup-img" src="" alt="LVL-UP">
   </div>
 
-  <!-- TESTBUTTONS -->
-  <button onclick="cubeKontakt('CUBE_0','System-Init')">CUBE_0</button>
-  <button onclick="cubeKontakt('CUBE_1','RAW')">CUBE_1</button>
-  <button onclick="cubeKontakt('CUBE_2','SAFE')">CUBE_2</button>
+  <script>
+    const BIG_GIF  = "iki1üc-COPYRIGHT.gif";   // großer Effekt
+    const SMALL_GIF = "2ui-copyright.gif";     // kleiner Effekt (Fallback)
 
-  <hr>
+    function showGif(src) {
+      const img = document.getElementById("lvlup-img");
+      img.style.display = "none";
+      img.onerror = null; // alte Fehler-Handler löschen
+      img.onload = () => { img.style.display = "block"; };
+      img.src = src;
+    }
 
-  <!-- WÜRFEL -->
-  <h2>Würfel</h2>
-  <input id="p1" type="number" value="1">
-  <input id="p2" type="number" value="2">
-  <input id="p3" type="number" value="3">
-  <input id="p4" type="number" value="4">
-  <button onclick="berechneWuerfel()">Berechnen</button>
-  <div id="output">–</div>
+    function lvlUp() {
+      const img = document.getElementById("lvlup-img");
 
-  <hr>
+      // zuerst großer LVL-UP
+      img.onerror = () => {
+        // wenn großer nicht geht → kleiner LVL-UP
+        showGif(SMALL_GIF);
+      };
 
-  <!-- VR -->
-  <h2>Verhandlungsstatus</h2>
-  <button onclick="zeigeVerhandlungsStatus(1,1,1,1)">VR testen</button>
-  <div id="vr-box">–</div>
+      showGif(BIG_GIF);
+    }
+  </script>
 
 </body>
 </html>
