@@ -1,8 +1,0 @@
-// /api/lvlup.js
-
-module.exports = function lvlup(req, res) {
-  // Deine FULL/MINI Logik
-  const full = Math.random() > 0.5; // Beispiel
-
-  res.json({ full });
-};
