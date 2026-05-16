@@ -1,4 +1,3 @@
-
 function berechneVR(H, E, F, D) {
   return H * E * F * D;
 }
