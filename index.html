@@ -1,32 +1,66 @@
-<div id="cube_live" style="width:200px;height:200px;background:#000;display:flex;align-items:center;justify-content:center;">
-  <img id="cube_gif" src="" style="max-width:100%;max-height:100%;display:none;">
-</div>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title># SHIFT – Le Mio</title>
+    <style>
+        body {
+            background: #111;
+            color: #eee;
+            font-family: monospace;
+            padding: 40px;
+        }
+        .manga {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .fr {
+            color: #c33; /* französischer Rot‑Akzent */
+        }
+        .de {
+            color: #3cc; /* deutscher Cyan‑Kontrast */
+        }
+        .tag {
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+</head>
 
-<script>
-  const FULL = "iki1üc-COPYRIGHT.gif";
-  const MINI = "2ui-copyright.gif";
+<body>
 
-  function cubeShow(src) {
-    const img = document.getElementById("cube_gif");
-    img.style.display = "none";
-    img.onerror = null;
-    img.onload = () => img.style.display = "block";
-    img.src = src;
-  }
+    <div class="manga">
+        <span class="tag">#</span> SHIFT  
+        <span class="fr">— Le Mio</span>  
+        <span class="de">/ Mein Weg</span>
+    </div>
 
-  async function cubeLVLUP() {
-    try {
-      const res = await fetch("/api/lvlup", { method: "POST" });
-      const data = await res.json();
+    <p class="de">
+        # DE: Dies ist die neue Bühne.<br>
+        Ein Anfang aus wenig.<br>
+        Ein Schritt aus Chaos.<br>
+        Ein Move, der sich selbst erklärt.
+    </p>
 
-      if (data.mode === "FULL") cubeShow(FULL);
-      else cubeShow(MINI);
+    <p class="fr">
+        # FR: Voici la nouvelle scène.<br>
+        Un début né du peu.<br>
+        Un pas sorti du chaos.<br>
+        Un mouvement qui se crée lui‑même.
+    </p>
 
-    } catch (e) {
-      cubeShow(MINI);
-    }
-  }
+    <p class="de">
+        # DE: Alles bleibt leicht.<br>
+        Alles bleibt reversibel.<br>
+        Alles bleibt zack zack.
+    </p>
 
-  // Startzustand
-  window.addEventListener("load", () => cubeShow(MINI));
-</script>
+    <p class="fr">
+        # FR: Tout reste léger.<br>
+        Tout reste réversible.<br>
+        Tout reste rapide.
+    </p>
+
+</body>
+</html>
