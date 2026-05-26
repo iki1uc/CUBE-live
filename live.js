@@ -1,49 +1,17 @@
-
-// CUBE‑LIVE · SOLL+IST-Version + System-Integration
-// ID: CUBE‑LIVE / FILE: live.js / ROLE: Echtzeit-Motor (Kernkompetenz)
-// Kunstform: Erst ICH, dann SYSTEM, dann WIR.
-
-// 1) Selbstdefinition (LIVE zuerst, nicht System)
-const CUBE_ID = "CUBE-LIVE";
-const ROLE = "Echtzeit-Motor";
-
-// 2) Interner Zustand (IST, aber vom SOLL gerahmt)
-let STATE = localStorage.getItem("STATE") || "idle";
-
-// 3) System-Layer (das, was das System möchte) – nur lesend
-function liveGetSchiene() {
+function EICH() {
+  const now = new Date();
   return {
-    prev: localStorage.getItem("PREV") || "unknown",
-    now: "LIVE",
-    next: localStorage.getItem("NEXT") || "unknown"
+    datum: now.toLocaleDateString("de-DE"),
+    uhrzeit: now.toLocaleTimeString("de-DE"),
+    stamp: now.getTime(),
+    iso: now.toISOString()
   };
 }
-
-function liveGetGrav() {
-  return localStorage.getItem("GRAV") || "0";
-}
-
-function liveGetCluster() {
-  return localStorage.getItem("MODE") || "AB"; // A / B / AB
-}
-
-// 4) Kette (LIVE in der Kette, aber bewusst)
-function liveChain(next) {
-  localStorage.setItem("PREV", "LIVE");
-  localStorage.setItem("NEXT", next);
-}
-
-// 5) Kernkompetenz: LIVE setzt den Zustand (ICH)
-function liveSetState(newState) {
-  STATE = newState;
-  localStorage.setItem("STATE", newState);
-}
-
-// 6) Verhandlung: ICH + SYSTEM → Realtime-Frame
 function liveFrame(input) {
   const schiene = liveGetSchiene();
   const mode = liveGetCluster();
   const grav = liveGetGrav();
+  const eich = EICH(); // ← EICH integriert
 
   return {
     cube: CUBE_ID,
@@ -52,21 +20,29 @@ function liveFrame(input) {
     mode,
     grav,
     state: STATE,
-    schiene
+    schiene,
+    eich // ← jetzt Teil des Frames
   };
 }
-
-// 7) Kernfunktion: Realtime-Reaktion (Funktion im Funktion)
+function liveSinn(data) {
+  return {
+    essenz: data.out,
+    richtung: data.schiene.next,
+    zeit: data.eich.uhrzeit,
+    datum: data.eich.datum,
+    kern: `${data.cube} / ${data.role}`
+  };
+}
 function liveCore(input) {
   const frame = liveFrame(input);
+  const sinn = liveSinn(frame);
 
   return {
     ...frame,
-    out: `LIVE(${frame.in})`
+    out: `LIVE(${frame.in})`,
+    sinn // ← KOMPLETTUM integriert
   };
 }
-
-// 8) Ausgabe (wissenschaftlich, klar, lesbar)
 function live_out(data) {
   document.getElementById("out").innerHTML = `
     <div class="out-title">CUBE‑LIVE – Echtzeit</div>
@@ -76,6 +52,8 @@ function live_out(data) {
     <div class="out-grav"><b>GRAV:</b> ${data.grav}</div>
     <div class="out-state"><b>STATE:</b> ${data.state}</div>
     <div class="out-schiene"><b>SCH:</b> ${data.schiene.prev} → LIVE → ${data.schiene.next}</div>
+    <div class="out-eich"><b>EICH:</b> ${data.eich.uhrzeit} / ${data.eich.datum}</div>
+    <div class="out-sinn"><b>7‑Sinn:</b> Essenz=${data.sinn.essenz}, Richtung=${data.sinn.richtung}</div>
     <div class="out-meta"><b>CUBE:</b> ${data.cube} / <b>ROLE:</b> ${data.role}</div>
   `;
 }
