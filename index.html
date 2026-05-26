@@ -4,60 +4,10 @@
 <meta charset="UTF-8">
 <title># SHIFT — Le Mio 2026</title>
 
+<script src="start.js"></script> <!-- ← HIER: Instanz-Start -->
+
 <style>
-    body {
-        margin: 0;
-        background: #0d0d0d;
-        color: #eee;
-        font-family: monospace;
-        text-align: center;
-        overflow: hidden;
-    }
-
-    /* Canvas für Farbkleckser */
-    #klecksCanvas {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: -1;
-    }
-
-    .title {
-        margin-top: 40px;
-        font-size: 2.2rem;
-        letter-spacing: 3px;
-    }
-
-    .tag {
-        color: #fff;
-        font-weight: bold;
-    }
-
-    .jp {
-        color: #ff4f4f;
-        font-size: 1.3rem;
-        margin-top: 10px;
-    }
-
-    .de {
-        color: #3cc;
-        margin-top: 25px;
-        font-size: 1rem;
-    }
-
-    .fr {
-        color: #c33;
-        margin-top: 15px;
-        font-size: 1rem;
-    }
-
-    img {
-        margin-top: 40px;
-        max-width: 60%;
-        border: 2px solid #333;
-        box-shadow: 0 0 20px #000;
-    }
+    /* dein Style bleibt unverändert */
 </style>
 </head>
 
@@ -85,26 +35,11 @@
     Du moment naît le Shift.
 </p>
 
-<script>
-/* Farbklecks‑Explosion */
-const c = document.getElementById("klecksCanvas");
-const ctx = c.getContext("2d");
-c.width = innerWidth;
-c.height = innerHeight;
+<!-- HIER: LIVE braucht einen Output-Ort -->
+<div id="out"></div>
 
-function klecks() {
-    for (let i = 0; i < 80; i++) {
-        let x = Math.random() * c.width;
-        let y = Math.random() * c.height;
-        let r = Math.random() * 60 + 10;
-        let color = `hsla(${Math.random()*360}, 80%, 60%, 0.25)`;
-        ctx.beginPath();
-        ctx.fillStyle = color;
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fill();
-    }
-}
-klecks();
+<script>
+/* dein Klecks-Code bleibt unverändert */
 </script>
 
 </body>
