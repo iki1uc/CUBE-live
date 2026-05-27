@@ -1,1 +1,204 @@
-1
+<!-- start8.html – Cluster mit Shine‑Kette, Gravitation, ALL4ALL‑Status, LIVE -->
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>start8 – Cluster</title>
+
+  <!-- Kern -->
+  <script src="cube-core.js" defer></script>
+  <script src="verhandlung-core.js" defer></script>
+  <script src="action-core.js" defer></script>
+  <script src="4u-core.js" defer></script>
+
+  <!-- Shine / Live (klassisch) -->
+  <script src="shine-presenter.js" defer></script>
+  <script src="live.js" defer></script>
+
+  <!-- Cluster-Module -->
+  <script type="module" src="cube3.js"></script>
+  <script type="module" src="cube2.js"></script>
+
+  <style>
+    body { background:#000; color:#0f0; font-family:monospace; margin:0; padding:1rem; }
+    nav a { margin-right:1rem; color:#0f0; text-decoration:none; }
+    section.block { border:1px solid #0f0; padding:0.5rem 1rem; margin:0.5rem 0; }
+    .label { font-size:0.8rem; opacity:0.7; }
+    pre { background:#020; padding:0.5rem; white-space:pre-wrap; }
+    .buttons button { margin-right:0.5rem; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#fouru">4u.me</a>
+  <a href="#cube2-block">CUBE‑2</a>
+  <a href="#cube3-block">CUBE‑3</a>
+  <a href="#shine-block">SHINE</a>
+  <a href="#live-block">LIVE</a>
+  <a href="#all4all-block">ALL4ALL</a>
+</nav>
+
+<section id="fouru" class="block">
+  <div class="label">4u.me</div>
+  <h2>4u.me – Ebenen</h2>
+  <pre id="fouru-output">4u.me bereit.</pre>
+</section>
+
+<section id="cube2-block" class="block">
+  <div class="label">CUBE‑2</div>
+  <h2>CUBE‑2 – Oberfläche</h2>
+  <pre id="c2">CUBE‑2 bereit.</pre>
+</section>
+
+<section id="cube3-block" class="block">
+  <div class="label">CUBE‑3</div>
+  <h2>CUBE‑3 – Meta</h2>
+  <pre id="c4">CUBE‑3 bereit.</pre>
+</section>
+
+<section id="shine-block" class="block">
+  <div class="label">SHINE</div>
+  <h2>SHINE‑Output</h2>
+  <pre id="out">SHINE bereit.</pre>
+</section>
+
+<section id="live-block" class="block">
+  <div class="label">LIVE</div>
+  <h2>CUBE‑LIVE</h2>
+  <pre id="live-frame">LIVE‑FRAME: –</pre>
+</section>
+
+<section id="all4all-block" class="block">
+  <div class="label">ALL4ALL</div>
+  <h2>ALL4ALL‑Status</h2>
+  <pre id="all4all-status">ALL4ALL bereit.</pre>
+  <div class="buttons">
+    <button id="btn-shine-kette">Shine‑Kette (SCAN→FUTURE→META→LIVE)</button>
+    <button id="btn-grav-toggle">Gravitation vor/rück wechseln</button>
+  </div>
+</section>
+
+<section id="action-block" class="block">
+  <div class="label">Action</div>
+  <h2>Action → LIVE</h2>
+  <p id="status">Status: bereit</p>
+  <div class="buttons">
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="reset">Reset</button>
+  </div>
+</section>
+
+<script type="module">
+  import { cube3_run, cube3_toLive } from "./cube3.js";
+  import { cube2_surface, cube2_pipeline } from "./cube2.js";
+
+  // 4u.me Basis
+  const fouruOutEl = document.getElementById("fouru-output");
+  const fouruResult = typeof fourU === "function"
+    ? fourU("start8.html / Cluster")
+    : { alt: "ALT?", evo7: "EVO7?", evo8: "EVO8?" };
+
+  fouruOutEl.textContent =
+    "ALT:  " + fouruResult.alt + "\n" +
+    "EVO7: " + fouruResult.evo7 + "\n" +
+    "EVO8: " + fouruResult.evo8;
+
+  // CUBE‑2 Oberfläche initial
+  cube2_surface("start8 / Oberfläche");
+
+  // CUBE‑3 initial
+  let vr = null;
+  if (typeof berechneVR === "function") {
+    vr = berechneVR(1, 1, 1, 1);
+  }
+  cube3_run("start8 / Start", vr, fouruResult.evo8, null);
+
+  // LIVE‑Frame in #live-frame spiegeln (zusätzlich zu live_out)
+  function mirrorLiveFrame(label) {
+    const el = document.getElementById("live-frame");
+    if (!el) return;
+    const now = new Date().toLocaleTimeString("de-DE");
+    el.textContent = label + " @ " + now;
+  }
+
+  // Gravitation vor/rück
+  let GRAV = "VOR"; // "VOR" oder "RUECK"
+
+  function updateAll4AllStatus(extra = "") {
+    const el = document.getElementById("all4all-status");
+    if (!el) return;
+
+    const lines = [];
+    lines.push("ALL4ALL‑STATUS");
+    lines.push("──────────────");
+    lines.push("GRAV: " + GRAV + " (VOR = Zukunft / RUECK = Rückblick)");
+    lines.push("CUBE‑2: " + (typeof cube2_surface === "function" ? "OK" : "–"));
+    lines.push("CUBE‑3: " + (typeof cube3_run === "function" ? "OK" : "–"));
+    lines.push("LIVE:   " + (typeof liveCore === "function" ? "OK" : "–"));
+    lines.push("SHINE:  " + (typeof shinePresent === "function" ? "OK" : "–"));
+    if (extra) lines.push("", extra);
+    el.textContent = lines.join("\n");
+  }
+
+  updateAll4AllStatus();
+
+  // Shine‑Kette (SCAN → FUTURE → META → LIVE)
+  async function shineKette(input) {
+    // 1) CUBE‑2 Pipeline (optional)
+    cube2_pipeline(input, "AB");
+
+    // 2) CUBE‑3 dreimal laufen lassen (SCAN, FUTURE, META)
+    cube3_run(input, vr, fouruResult.evo8, null);   // SCAN
+    cube3_run(input, vr, fouruResult.evo8, null);   // FUTURE
+    cube3_run(input, vr, fouruResult.evo8, null);   // META
+
+    // 3) LIVE je nach Gravitation
+    if (typeof liveCore === "function" && typeof live_out === "function") {
+      const tag = GRAV === "VOR" ? "FWD" : "BACK";
+      const frame = liveCore(tag + ":" + input);
+      live_out(frame);
+      mirrorLiveFrame("LIVE " + tag);
+      updateAll4AllStatus("Shine‑Kette ausgeführt (" + tag + ")");
+    }
+  }
+
+  // Buttons
+  document.getElementById("btn-shine-kette").addEventListener("click", () => {
+    shineKette("Shine‑Kette / start8");
+  });
+
+  document.getElementById("btn-grav-toggle").addEventListener("click", () => {
+    GRAV = GRAV === "VOR" ? "RUECK" : "VOR";
+    updateAll4AllStatus("Gravitation gewechselt.");
+  });
+
+  // Action → LIVE
+  const statusEl = document.getElementById("status");
+  document.getElementById("start").addEventListener("click", () => {
+    if (typeof liveCore === "function" && typeof live_out === "function") {
+      const frame = liveCore("ACTION:START");
+      live_out(frame);
+      mirrorLiveFrame("ACTION START");
+    }
+    statusEl.textContent = "Status: LIVE läuft";
+  });
+
+  document.getElementById("stop").addEventListener("click", () => {
+    mirrorLiveFrame("STOP");
+    statusEl.textContent = "Status: LIVE gestoppt";
+  });
+
+  document.getElementById("reset").addEventListener("click", () => {
+    mirrorLiveFrame("RESET");
+    statusEl.textContent = "Status: LIVE reset";
+  });
+
+  // Initial ALL4ALL‑Ping
+  updateAll4AllStatus("start8 Cluster initialisiert.");
+</script>
+
+</body>
+</html>
