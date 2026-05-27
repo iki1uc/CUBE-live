@@ -7,11 +7,12 @@ function EICH() {
     iso: now.toISOString()
   };
 }
+
 function liveFrame(input) {
   const schiene = liveGetSchiene();
   const mode = liveGetCluster();
   const grav = liveGetGrav();
-  const eich = EICH(); // ← EICH integriert
+  const eich = EICH();
 
   return {
     cube: CUBE_ID,
@@ -21,9 +22,10 @@ function liveFrame(input) {
     grav,
     state: STATE,
     schiene,
-    eich // ← jetzt Teil des Frames
+    eich
   };
 }
+
 function liveSinn(data) {
   return {
     essenz: data.out,
@@ -33,6 +35,7 @@ function liveSinn(data) {
     kern: `${data.cube} / ${data.role}`
   };
 }
+
 function liveCore(input) {
   const frame = liveFrame(input);
   const sinn = liveSinn(frame);
@@ -40,9 +43,10 @@ function liveCore(input) {
   return {
     ...frame,
     out: `LIVE(${frame.in})`,
-    sinn // ← KOMPLETTUM integriert
+    sinn
   };
 }
+
 function live_out(data) {
   document.getElementById("out").innerHTML = `
     <div class="out-title">CUBE‑LIVE – Echtzeit</div>
