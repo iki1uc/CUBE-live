@@ -1,22 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-  META + STYLE
-</head>
+/* -------------------------
+   LIVE – Echte Fehlerzustände
+------------------------- */
 
-<body>
+let errorActive = false;
+let errorStart = 0;
+let errorCount = 0;
 
-  HEADER (Titel)
+function getErrorState() {
+  const r = Math.random();
 
-  SECTION: MATRIX (12‑Matrix, Rotation, x/8)
+  if (r < 0.70) return "OK";          // 70% stabil
+  if (r < 0.85) return "WARN";        // 15% leichte Abweichung
+  if (r < 0.97) return "ERROR";       // 12% echter Fehler
+  return "CRITICAL";                  // 3% System droht zu kippen
+}
 
-  SECTION: LIVE (Ping, Scan, Status)
+function updateLive() {
+  const slot = localStorage.getItem("cube_active") || "-";
+  const state = getErrorState();
+  const now = Date.now();
 
-  SECTION: MIRROR (Debug‑Dump)
+  // Fehler-Start
+  if ((state === "ERROR" || state === "CRITICAL") && !errorActive) {
+    errorActive = true;
+    errorStart = now;
+    errorCount++;
+  }
 
-  BOTTOM-NAV (MATRIX / LIVE / MIRROR – intern)
+  // Fehler-Ende
+  if (state === "OK" && errorActive) {
+    errorActive = false;
+  }
 
-  SCRIPT (alles in einer Datei, keine Imports)
+  // Fehler-Dauer berechnen
+  let duration = 0;
+  if (errorActive) {
+    duration = Math.floor((now - errorStart) / 1000);
+  }
 
-</body>
-</html>
+  const out = {
+    time: new Date().toLocaleTimeString(),
+    ping: Math.floor(Math.random()*12)+"ms",
+    scan: Math.floor(Math.random()*100)+"%",
+    active: "S"+slot,
+    state: state,
+    error_active: errorActive,
+    error_count: errorCount,
+    error_duration_sec: duration
+  };
+
+  document.getElementById("live-out").textContent =
+    JSON.stringify(out, null, 2);
+}
+
+setInterval(updateLive, 900);
+updateLive();
