@@ -6,14 +6,22 @@ lade…
 </pre>
 
 <script>
-let mirror = {
-  time: new Date().toLocaleTimeString(),
-  random: Math.random(),
-  activeSlot: "S0" + (1 + Math.floor(Math.random()*12)),
-  scan: Math.floor(Math.random()*100) + "%",
-  ping: Math.floor(Math.random()*12) + "ms"
-};
+function updateMirror() {
+  let mirror = {
+    time: new Date().toLocaleTimeString(),
+    random: Math.random(),
+    activeSlot: "S0" + (1 + Math.floor(Math.random()*12)),
+    scan: Math.floor(Math.random()*100) + "%",
+    ping: Math.floor(Math.random()*12) + "ms"
+  };
 
-document.getElementById("mirror-out").textContent =
-  JSON.stringify(mirror, null, 2);
+  document.getElementById("mirror-out").textContent =
+    JSON.stringify(mirror, null, 2);
+}
+
+// sofort einmal anzeigen
+updateMirror();
+
+// dann jede Sekunde neu
+setInterval(updateMirror, 1000);
 </script>
