@@ -1,12 +1,19 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <title>LIVEDOCÈR – Mirror</title>
-</head>
-<body style="background:#000; color:#fff; font-family:system-ui; padding:20px;">
-  <h1>LIVEDOCÈR – Mirror</h1>
-  <p>Diese Datei existiert nur, um GitHub Pages zu zwingen, neu zu bauen.</p>
-</body>
-</html>
+<h2>MIRROR – Debug</h2>
+<pre id="mirror-out" style="
+  background:#0a0a0a; color:#ccc; padding:12px; border:1px solid #333;
+  border-radius:6px; width:90%; height:70vh; overflow:auto;">
+lade…
+</pre>
 
+<script>
+let mirror = {
+  time: new Date().toLocaleTimeString(),
+  random: Math.random(),
+  activeSlot: "S0" + (1 + Math.floor(Math.random()*12)),
+  scan: Math.floor(Math.random()*100) + "%",
+  ping: Math.floor(Math.random()*12) + "ms"
+};
+
+document.getElementById("mirror-out").textContent =
+  JSON.stringify(mirror, null, 2);
+</script>
