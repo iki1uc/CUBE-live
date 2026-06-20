@@ -1,46 +1,112 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title># SHIFT — Le Mio 2026</title>
-
-<script src="start.js"></script> <!-- ← HIER: Instanz-Start -->
-
-<style>
-    /* dein Style bleibt unverändert */
-</style>
+  <meta charset="UTF-8">
+  <title>CUBE LIVE – RESPO Radar</title>
+  <style>
+    body {
+      background:#05060a;
+      color:#e5e5e5;
+      font-family:system-ui, sans-serif;
+      margin:0;
+      padding:20px;
+    }
+    h1 {
+      font-size:1.6rem;
+      margin-bottom:5px;
+    }
+    h2 {
+      font-size:1.1rem;
+      margin-top:20px;
+      margin-bottom:8px;
+      color:#9fdcff;
+    }
+    .grid {
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    .panel {
+      border:1px solid #333;
+      border-radius:8px;
+      padding:10px;
+      background:#0b0d12;
+    }
+    .respo-row {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:4px 0;
+      border-bottom:1px dashed #222;
+      font-size:0.9rem;
+    }
+    .respo-row:last-child {
+      border-bottom:none;
+    }
+    .status {
+      display:inline-block;
+      min-width:70px;
+      text-align:right;
+      font-weight:bold;
+    }
+    .green { color:#4cff7a; }
+    .red   { color:#ff4c4c; }
+    .yellow{ color:#ffd84c; }
+    .mini {
+      font-size:0.75rem;
+      color:#9a9a9a;
+      margin-top:4px;
+    }
+    .tag {
+      display:inline-block;
+      padding:2px 6px;
+      border-radius:4px;
+      font-size:0.7rem;
+      background:#141720;
+      margin-right:4px;
+    }
+  </style>
 </head>
-
 <body>
 
-<canvas id="klecksCanvas"></canvas>
+  <h1>CUBE LIVE – passives RESPO Radar</h1>
+  <div class="mini">LIVE zeigt nur die Ist‑Lage. Keine Aktion, nur Präsenz.</div>
 
-<div class="title">
-    <span class="tag">#</span> SHIFT — <span class="fr">Le Mio</span>
-</div>
+  <div class="grid">
+    <!-- Panel: RESPO Übersicht -->
+    <div class="panel">
+      <h2>RESPO Status</h2>
 
-<div class="jp">時間のずれで、君を救う。</div>
+      <div class="respo-row">
+        <span>RESPO 1 ←</span>
+        <span class="status green">ONLINE</span>
+      </div>
+      <div class="mini">Pipeline: 1 · HTML: 82% · Ping: 14ms</div>
 
-<img src="dein-do.gif" alt="DO GIF">
+      <div class="respo-row">
+        <span>RESPO 2 →</span>
+        <span class="status yellow">SETUP</span>
+      </div>
+      <div class="mini">Pipeline: reserviert · HTML: 41% · Scan läuft</div>
 
-<p class="de">
-    # DE: Aus dem Chaos entsteht Form.<br>
-    Aus dem Klecks entsteht der Weg.<br>
-    Aus dem Moment entsteht der Shift.
-</p>
+      <div class="respo-row">
+        <span>RESPO 3 ←</span>
+        <span class="status red">OFFLINE</span>
+      </div>
+      <div class="mini">Pipeline: — · HTML: 0% · kein Ping</div>
 
-<p class="fr">
-    # FR: Du chaos naît la forme.<br>
-    De la tache naît la voie.<br>
-    Du moment naît le Shift.
-</p>
+      <div class="respo-row">
+        <span>RESPO 4 →</span>
+        <span class="status green">ONLINE</span>
+      </div>
+      <div class="mini">Pipeline: 3 · HTML: 96% · stabil</div>
+    </div>
 
-<!-- HIER: LIVE braucht einen Output-Ort -->
-<div id="out"></div>
+    <!-- Panel: Systemlage / ALL4ALL / ALL8ALL -->
+    <div class="panel">
+      <h2>Systemlage</h2>
 
-<script>
-/* dein Klecks-Code bleibt unverändert */
-</script>
-
-</body>
-</html>
+      <div class="mini">
+        <span class="tag">MODE: ALL4ALL → ALL8ALL SHIFT</span><br>
+        Aktive RESPOs: 3 / 4<br>
+        index.html aktiv: 78% · Module OK: 6 /
