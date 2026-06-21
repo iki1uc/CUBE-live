@@ -1,40 +1,18 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>LIVE – External Monitor</title>
+  <title>CUBE‑LIVE</title>
   <style>
-    body { background:#000; color:#0f0; font-family:monospace; padding:1rem; }
-    pre { background:#020; padding:1rem; border:1px solid #0f0; }
+    body { font-family: monospace; background:#000; color:#0f0; padding:20px; }
   </style>
 </head>
-
 <body>
-<h2>LIVE – External Monitor</h2>
-<pre id="out">lade…</pre>
 
-<script>
-function updateLive(){
-  const slot = localStorage.getItem("cube_active") || "-";
-  const state = localStorage.getItem("cube_error_state") || "OK";
-  const count = localStorage.getItem("cube_error_count") || 0;
-  const duration = localStorage.getItem("cube_error_duration") || 0;
+<h1>CUBE‑LIVE</h1>
+<pre id="live-out">Lade…</pre>
 
-  const out = {
-    time: new Date().toLocaleTimeString(),
-    active_slot: "S" + slot,
-    error_state: state,
-    error_count: count,
-    error_duration_sec: duration
-  };
-
-  document.getElementById("out").textContent =
-    JSON.stringify(out, null, 2);
-}
-
-setInterval(updateLive, 500);
-updateLive();
-</script>
+<script src="live.js"></script>
 
 </body>
 </html>
