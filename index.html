@@ -1,57 +1,47 @@
-/* -------------------------
-   LIVE – Echte Fehlerzustände
-------------------------- */
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CUBE‑LIVE / ROOT</title>
+  <style>
+    body { font-family: monospace; background:#000; color:#0f0; padding:20px; }
+    button { margin:5px; padding:10px; font-size:16px; }
+  </style>
+</head>
+<body>
 
-let errorActive = false;
-let errorStart = 0;
-let errorCount = 0;
+<h1>CUBE‑LIVE / ROOT</h1>
 
-function getErrorState() {
-  const r = Math.random();
+<p>Aktiver Slot wählen:</p>
 
-  if (r < 0.70) return "OK";          // 70% stabil
-  if (r < 0.85) return "WARN";        // 15% leichte Abweichung
-  if (r < 0.97) return "ERROR";       // 12% echter Fehler
-  return "CRITICAL";                  // 3% System droht zu kippen
+<button onclick="setSlot(1)">Slot 1</button>
+<button onclick="setSlot(2)">Slot 2</button>
+<button onclick="setSlot(3)">Slot 3</button>
+<button onclick="setSlot(4)">Slot 4</button>
+
+<hr>
+
+<h3>Weiter:</h3>
+
+<button onclick="goLive()">→ LIVE</button>
+<button onclick="goMirror()">→ MIRROR</button>
+
+<script>
+function setSlot(n) {
+  localStorage.setItem("cube_active", n);
+  alert("Slot " + n + " gesetzt.");
 }
 
-function updateLive() {
+function goLive() {
   const slot = localStorage.getItem("cube_active") || "-";
-  const state = getErrorState();
-  const now = Date.now();
-
-  // Fehler-Start
-  if ((state === "ERROR" || state === "CRITICAL") && !errorActive) {
-    errorActive = true;
-    errorStart = now;
-    errorCount++;
-  }
-
-  // Fehler-Ende
-  if (state === "OK" && errorActive) {
-    errorActive = false;
-  }
-
-  // Fehler-Dauer berechnen
-  let duration = 0;
-  if (errorActive) {
-    duration = Math.floor((now - errorStart) / 1000);
-  }
-
-  const out = {
-    time: new Date().toLocaleTimeString(),
-    ping: Math.floor(Math.random()*12)+"ms",
-    scan: Math.floor(Math.random()*100)+"%",
-    active: "S"+slot,
-    state: state,
-    error_active: errorActive,
-    error_count: errorCount,
-    error_duration_sec: duration
-  };
-
-  document.getElementById("live-out").textContent =
-    JSON.stringify(out, null, 2);
+  window.location.href = "live.html?slot=" + slot;
 }
 
-setInterval(updateLive, 900);
-updateLive();
+function goMirror() {
+  const slot = localStorage.getItem("cube_active") || "-";
+  window.location.href = "mirror.html?slot=" + slot;
+}
+</script>
+
+</body>
+</html>
