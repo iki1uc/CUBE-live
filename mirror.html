@@ -1,41 +1,18 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>MIRROR – External Debug</title>
+  <title>CUBE‑MIRROR</title>
   <style>
-    body { background:#000; color:#0f0; font-family:monospace; padding:1rem; }
-    pre { background:#020; padding:1rem; border:1px solid #0f0; }
+    body { font-family: monospace; background:#000; color:#0f0; padding:20px; }
   </style>
 </head>
-
 <body>
-<h2>MIRROR – Debug</h2>
-<pre id="mirror">lade…</pre>
 
-<script>
-function updateMirror(){
-  const slot = localStorage.getItem("cube_active") || "-";
-  const state = localStorage.getItem("cube_error_state") || "OK";
-  const count = localStorage.getItem("cube_error_count") || 0;
-  const duration = localStorage.getItem("cube_error_duration") || 0;
+<h1>CUBE‑MIRROR</h1>
+<pre id="mirror-out">Warte auf Daten…</pre>
 
-  const out = {
-    mirror_time: new Date().toLocaleTimeString(),
-    active_slot: "S" + slot,
-    error_state: state,
-    error_count: count,
-    error_duration_sec: duration,
-    sys: "OK – External Mirror"
-  };
-
-  document.getElementById("mirror").textContent =
-    JSON.stringify(out, null, 2);
-}
-
-setInterval(updateMirror, 600);
-updateMirror();
-</script>
+<script src="mirror.js"></script>
 
 </body>
 </html>
