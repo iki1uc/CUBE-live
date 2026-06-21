@@ -1,5 +1,5 @@
 /* -------------------------------------
-   AUTO-FLOW – Alle Trigger → 1 Bewegung
+   AUTO-FLOW – LIVEDOCÈR
    Passiv. Meldend. Echtzeit.
 -------------------------------------- */
 
@@ -12,7 +12,6 @@ function getState() {
   return "CRITICAL";
 }
 
-// Zentrale Auto-Bewegung
 function autoFlow() {
   const out = {
     time: new Date().toLocaleTimeString(),
@@ -25,14 +24,5 @@ function autoFlow() {
     JSON.stringify(out, null, 2);
 }
 
-// Alle Trigger laufen in denselben Loop
-function trigger(input) {
-  // egal welcher Trigger reinkommt → autoFlow()
-  autoFlow();
-}
-
-// Auto-Loop (2–4 Sekunden)
-setInterval(() => trigger("auto"), 2000 + Math.random()*2000);
-
-// Start sofort
-trigger("start");
+setInterval(autoFlow, 2000 + Math.random()*2000);
+autoFlow();
