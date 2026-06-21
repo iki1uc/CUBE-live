@@ -1,66 +1,38 @@
-/* -------------------------
-   LIVE v2.0 – CUBE-kompatibel
-------------------------- */
+/* -------------------------------------
+   AUTO-FLOW – Alle Trigger → 1 Bewegung
+   Passiv. Meldend. Echtzeit.
+-------------------------------------- */
 
-// Parameter aus URL holen
-const p = new URLSearchParams(window.location.search);
-const slot = p.get("slot") || "-";
-const mode = p.get("mode") || "NC";
-const id   = p.get("id")   || "LIVE-000";
-const tech = p.get("tech") || "NC";
-
-let errorActive = false;
-let errorStart = 0;
-let errorCount = 0;
-
-function getErrorState() {
+function getState() {
   const r = Math.random();
 
-  if (r < 0.70) return "OK";          // 70% stabil
-  if (r < 0.85) return "WARN";        // 15% leichte Abweichung
-  if (r < 0.97) return "ERROR";       // 12% echter Fehler
-  return "CRITICAL";                  // 3% System droht zu kippen
+  if (r < 0.70) return "OK";
+  if (r < 0.85) return "WARN";
+  if (r < 0.97) return "ERROR";
+  return "CRITICAL";
 }
 
-function updateLive() {
-  const state = getErrorState();
-  const now = Date.now();
-
-  // Fehler-Start
-  if ((state === "ERROR" || state === "CRITICAL") && !errorActive) {
-    errorActive = true;
-    errorStart = now;
-    errorCount++;
-  }
-
-  // Fehler-Ende
-  if (state === "OK" && errorActive) {
-    errorActive = false;
-  }
-
-  // Fehler-Dauer berechnen
-  let duration = 0;
-  if (errorActive) {
-    duration = Math.floor((now - errorStart) / 1000);
-  }
-
+// Zentrale Auto-Bewegung
+function autoFlow() {
   const out = {
     time: new Date().toLocaleTimeString(),
-    ping: Math.floor(Math.random()*12)+"ms",
-    scan: Math.floor(Math.random()*100)+"%",
-    slot: "S" + slot,
-    id: id,
-    mode: mode,
-    tech: tech,
-    state: state,
-    error_active: errorActive,
-    error_count: errorCount,
-    error_duration_sec: duration
+    ping: Math.floor(Math.random()*10) + "ms",
+    scan: Math.floor(Math.random()*100) + "%",
+    state: getState()
   };
 
   document.getElementById("live-out").textContent =
     JSON.stringify(out, null, 2);
 }
 
-setInterval(updateLive, 900);
-updateLive();
+// Alle Trigger laufen in denselben Loop
+function trigger(input) {
+  // egal welcher Trigger reinkommt → autoFlow()
+  autoFlow();
+}
+
+// Auto-Loop (2–4 Sekunden)
+setInterval(() => trigger("auto"), 2000 + Math.random()*2000);
+
+// Start sofort
+trigger("start");
