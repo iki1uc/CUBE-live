@@ -5,12 +5,41 @@
   <title>CUBE‑MIRROR</title>
   <style>
     body { font-family: monospace; background:#000; color:#0f0; padding:20px; }
+    .gate { cursor:pointer; margin-right:10px; display:inline-block; padding:4px 8px; border:1px solid #0f0; }
+    .gate:hover { background:#020; }
   </style>
 </head>
 <body>
 
 <h1>CUBE‑MIRROR</h1>
+
+<!-- GATE-BAR -->
+<div class="gate" data-target="cube-board.html">BOARD</div>
+<div class="gate" data-target="live.html">LIVE</div>
+<div class="gate" data-target="on3.html">ON3</div>
+
 <pre id="mirror-out">Warte auf Daten…</pre>
+
+<script>
+// GATE-ROUTER
+document.querySelectorAll(".gate").forEach(g => {
+  g.onclick = () => window.location.href = g.dataset.target;
+});
+
+// TMP-MIRROR (INTERNAL)
+fetch("/tmp/internal.tmp")
+  .then(r => r.text())
+  .then(t => {
+    document.getElementById("mirror-out").textContent = t;
+  })
+  .catch(() => {
+    document.getElementById("mirror-out").textContent = "Kein interner TMP gefunden.";
+  });
+
+// EVO-SCAN (MIRROR)
+let EVO = Math.floor(Math.random()*9);
+console.log("MIRROR EVO:", EVO);
+</script>
 
 <script src="mirror.js"></script>
 
