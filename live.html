@@ -5,12 +5,41 @@
   <title>CUBE‑LIVE</title>
   <style>
     body { font-family: monospace; background:#000; color:#0f0; padding:20px; }
+    .gate { cursor:pointer; margin-right:10px; display:inline-block; padding:4px 8px; border:1px solid #0f0; }
+    .gate:hover { background:#020; }
   </style>
 </head>
 <body>
 
 <h1>CUBE‑LIVE</h1>
+
+<!-- GATE-BAR -->
+<div class="gate" data-target="cube-board.html">BOARD</div>
+<div class="gate" data-target="mirror.html">MIRROR</div>
+<div class="gate" data-target="on3.html">ON3</div>
+
 <pre id="live-out">Lade…</pre>
+
+<script>
+// GATE-ROUTER
+document.querySelectorAll(".gate").forEach(g => {
+  g.onclick = () => window.location.href = g.dataset.target;
+});
+
+// TMP-LIVE (PUBLIC)
+fetch("/tmp/public.tmp")
+  .then(r => r.text())
+  .then(t => {
+    document.getElementById("live-out").textContent = t;
+  })
+  .catch(() => {
+    document.getElementById("live-out").textContent = "Kein TMP gefunden.";
+  });
+
+// EVO-SCAN (LIVE)
+let EVO = Math.floor(Math.random()*6);
+console.log("LIVE EVO:", EVO);
+</script>
 
 <script src="live.js"></script>
 
